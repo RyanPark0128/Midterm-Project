@@ -55,8 +55,47 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
+  //check if user is logged in
+  //if user is logged in render to create polls page
+  //if they have any polls else render to polls
+  //if user isn't logged in render to login page...
   res.render("index");
 });
+
+app.get("/login", (req, res) => {
+  //check if user is logged in
+  //if user is logged in render to create polls page
+  //if they have any polls else render to polls
+
+  /*
+    if (((userLoginCheck(req.session.userID)))) {
+    templateVars.error = 'User already Logged in';
+    res.render('index', templateVars);
+  } else {
+    //res.render('login', templateVars);//not necessary?
+  }
+  */
+});
+
+app.post('/login', (req, res) => {
+  //check if input is not empty field
+  //check if email already exists, redirect to polls page if does
+  //if email
+
+/*
+ if (isItEmpty(req.body.email)) {
+    templateVars.error = 'Invalid input, populate fields';
+    //ensure users email exists
+  } else if (!emailCheck(req.body['email'], users)) {
+    templateVars.error = 'Invalid email';
+    //authenticate login credentials
+  } else {
+    //redirect to polls page
+    res.redirect('');
+  } */
+});
+
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
