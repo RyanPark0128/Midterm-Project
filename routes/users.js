@@ -7,7 +7,6 @@
 
 const express = require('express');
 const router  = express.Router();
-router.set("view engine", "ejs");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -24,23 +23,3 @@ module.exports = (db) => {
   });
   return router;
 };
-
-router.get('/user/:id', function (req, res, next) {
-  res.render('index')
-})
-
-router.get('/user/:id', function (req, res, next) {
-  res.render('vote_result')
-})
-
-router.get('/user/:id', function (req, res, next) {
-  res.render('')
-})
-
-router.get('/user/:id', function (req, res, next) {
-  res.render('')
-})
-
-
-
-

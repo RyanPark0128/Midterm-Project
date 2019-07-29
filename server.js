@@ -9,13 +9,14 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
-const cookieParser = require('cookie-parser');
-const cookieSession = require('cookie-session');
+// const cookieParser = require('cookie-parser');
+// const cookieSession = require('cookie-session');
 
 // PG database client/connection setup
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
+const admins = {}
 db.connect();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -25,11 +26,11 @@ app.use(morgan('dev'));
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'Key2'],
-}));
+// app.use(cookieParser());
+// app.use(cookieSession({
+//   name: 'session',
+//   keys: ['key1', 'Key2'],
+// }));
 app.set("view engine", "ejs");
 app.use("/styles", sass({
   src: __dirname + "/styles",
@@ -62,7 +63,8 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/login", (req, res) => {
+app.get("/createPoll", (req, res) => { 
+  res.render("createPoll")
   //check if user is logged in
   //if user is logged in render to create polls page
   //if they have any polls else render to polls
@@ -77,23 +79,24 @@ app.get("/login", (req, res) => {
   */
 });
 
-app.post('/login', (req, res) => {
-  //check if input is not empty field
-  //check if email already exists, redirect to polls page if does
-  //if email
-
-/*
- if (isItEmpty(req.body.email)) {
-    templateVars.error = 'Invalid input, populate fields';
-    //ensure users email exists
-  } else if (!emailCheck(req.body['email'], users)) {
-    templateVars.error = 'Invalid email';
-    //authenticate login credentials
-  } else {
-    //redirect to polls page
-    res.redirect('');
-  } */
+app.post("/createPoll", (req, res) => { 
+  res.render("createPoll")
 });
+app.get("/userPoll", (req, res) => { 
+  res.render("userPoll");
+  
+});
+app.get("/vote_result", (req, res) => { 
+  res.render('vote_result')
+  
+});
+
+app.post('/', (req, res) => {
+    admins.email = req.body['email']
+    console.log(admins.email)
+    res.redirect('/createPoll');
+})
+
 
 
 
