@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS respondents CASCADE;
+
+CREATE TABLE respondents (
+  id SERIAL PRIMARY KEY NOT NULL,
+  handle VARCHAR(255) NOT NULL
+);

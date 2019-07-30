@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS submissions CASCADE;
+
+CREATE TABLE submissions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  respondent_id INTEGER REFERENCES respondents(id) ON DELETE CASCADE,
+  survey_id INTEGER REFERENCES surveys(id) ON DELETE CASCADE
+);

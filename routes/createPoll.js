@@ -1,24 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const {requiresLogin} = require('../lib/middleware/authentication.js')
 
-router.get("/createPoll", (req, res) => { 
-    res.render("createPoll")
-    //check if user is logged in
-    //if user is logged in render to create polls page
-    //if they have any polls else render to polls
-  
-    /*
-      if (((userLoginCheck(req.session.userID)))) {
-      templateVars.error = 'User already Logged in';
-      res.render('index', templateVars);
-    } else {
-      //res.render('login', templateVars);//not necessary?
-    }
-    */
+//requiresLogin check if user is logged in
+router.get("/createPoll", requiresLogin, (req, res) => {
+  console.log("req.session.userId):",req.session.userId, "cookie session set, directed to render createpoll")
+  res.render("createPoll")
 });
 
-router.post("/createPoll", (req, res) => {
-    res.redirect("/vote_result")
+router.post("/createPoll", requiresLogin, (req, res) => {
+  res.redirect("/vote_result")
 });
 
 module.exports = router;
