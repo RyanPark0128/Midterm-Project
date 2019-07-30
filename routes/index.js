@@ -15,10 +15,8 @@ router.post('/login', (req, res) => {
       .status(500)
       .json({ error: err.message});
   });
-/*   req.session.userId = req.body['email'];
-  console.log("setting cookie to:", req.session.userId, "using routing /login post");
 
-  db.query(`SELECT * FROM admins;`)
+/*   db.query(`SELECT * FROM admins;`)
   .then(data => {
     const admins = data.rows;
     res.json({ admins });
@@ -28,6 +26,8 @@ router.post('/login', (req, res) => {
       .status(500)
       .json({ error: err.message });
   }); */
+  req.session.userId = req.body['email'];
+  console.log("setting cookie to:", req.session.userId, "using routing /login post");
 })
 
 router.get("/login", (req, res) => {
