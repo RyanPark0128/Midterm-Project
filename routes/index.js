@@ -15,7 +15,7 @@ router.post('/login', (req, res) => {
       .status(500)
       .json({ error: err.message});
   });
-
+  req.session.userId = req.body['email'];
 /*   db.query(`SELECT * FROM admins;`)
   .then(data => {
     const admins = data.rows;
@@ -26,8 +26,8 @@ router.post('/login', (req, res) => {
       .status(500)
       .json({ error: err.message });
   }); */
-  req.session.userId = req.body['email'];
   console.log("setting cookie to:", req.session.userId, "using routing /login post");
+  res.redirect('/createPoll');
 })
 
 router.get("/login", (req, res) => {
