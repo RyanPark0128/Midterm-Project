@@ -20,33 +20,22 @@
         <input class="headerLogin" type="submit" value="Login">
       </div>
     </nav>
-    
+
     <main>
       <section>
         <form id="addOption" method="POST" action="/createPoll">
           <h1>Create a Question!</h1>
           <textarea class="questionBox" name="text" placeholder="What should we do this Friday?"></textarea>
           <h1>Options</h1>
-          <div>
-            <textarea class="optionBox" name="text" placeholder="Stanley Park Biking"></textarea>
+          <div class="optionBox">
+            <textarea class="optionBox" name="text" placeholder="Enter option"></textarea>
+
           </div>
-          <div>
-            <textarea class="optionBox" name="text" placeholder="English Bay"></textarea>
-          </div>
-          <div>
-            <textarea class="optionBox" name="text" placeholder="Beer and Food"></textarea>
-          </div>
-          <div>
-            <textarea class="optionBox" name="text" placeholder="Code our Night Away in Lighthouse"></textarea>
-          </div>
-          <div>
-            <input type="submit" value="Add Option">
-          </div>
-          <div>
+            <input id="addOption" type="submit" value="Add Option">
             <input id="makePollButton" type="submit" value="Make Poll">
-          </div>
+
         </form>
-        
+
       </section>
     </main>
   </body>

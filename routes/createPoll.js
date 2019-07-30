@@ -9,7 +9,9 @@ router.get("/createPoll", requiresLogin, (req, res) => {
 });
 
 router.post("/createPoll", requiresLogin, (req, res) => {
+
   res.redirect("/vote_result")
 });
 
 module.exports = router;
+//tracks tweets and updates them
