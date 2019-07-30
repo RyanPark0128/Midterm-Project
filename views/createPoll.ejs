@@ -13,7 +13,7 @@
 
   <body>
     <nav class="header">
-      <h1>iWant</h1>
+      <h1 href="/">iWant</h1>
       <div>
         <input type="submit" value="Create New Poll">
       </div>
@@ -21,15 +21,9 @@
     
     <main>
       <section>
-        <form id="createPoll" method="POST" action="">
+        <form id="addOption" method="POST" action="/createPoll">
           <h1>Create a Question!</h1>
           <textarea class="questionBox" name="text" placeholder="What should we do this Friday?"></textarea>
-          <div>
-            <input type="submit" value="Add Option">
-          </div>
-        </form>
-
-        <form id="addOption" method="POST" action="">
           <h1>Options</h1>
           <div>
             <textarea class="optionBox" name="text" placeholder="Stanley Park Biking"></textarea>
@@ -43,15 +37,14 @@
           <div>
             <textarea class="optionBox" name="text" placeholder="Code our Night Away in Lighthouse"></textarea>
           </div>
-        </form>
-
-        <form id="addEmail" method="POST" action="">
-          <h1>Email</h1>
-          <textarea class="optionBox" name="text" placeholder="email@iwant.com"></textarea>
+          <div>
+            <input type="submit" value="Add Option">
+          </div>
           <div>
             <input id="makePollButton" type="submit" value="Make Poll">
           </div>
         </form>
+        
       </section>
     </main>
   </body>
