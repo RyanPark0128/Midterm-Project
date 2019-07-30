@@ -6,30 +6,26 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/createPoll.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
-    <nav class="header">
-      <h1>iWant</h1>
-      <div>
-        <input type="submit" value="Create New Poll">
+     <nav class="header">
+      <h1 href="/">iWant</h1>
+      <div class="headerButtons">
+        <input class="headerNewPoll" type="submit" value="Create New Poll">
+        <input class="headerLogin" type="submit" value="Login">
       </div>
     </nav>
     
     <main>
       <section>
-        <form id="createPoll" method="POST" action="">
+        <form id="addOption" method="POST" action="/createPoll">
           <h1>Create a Question!</h1>
           <textarea class="questionBox" name="text" placeholder="What should we do this Friday?"></textarea>
-          <div>
-            <input type="submit" value="Add Option">
-          </div>
-        </form>
-
-        <form id="addOption" method="POST" action="">
           <h1>Options</h1>
           <div>
             <textarea class="optionBox" name="text" placeholder="Stanley Park Biking"></textarea>
@@ -43,15 +39,14 @@
           <div>
             <textarea class="optionBox" name="text" placeholder="Code our Night Away in Lighthouse"></textarea>
           </div>
-        </form>
-
-        <form id="addEmail" method="POST" action="">
-          <h1>Email</h1>
-          <textarea class="optionBox" name="text" placeholder="email@iwant.com"></textarea>
+          <div>
+            <input type="submit" value="Add Option">
+          </div>
           <div>
             <input id="makePollButton" type="submit" value="Make Poll">
           </div>
         </form>
+        
       </section>
     </main>
   </body>

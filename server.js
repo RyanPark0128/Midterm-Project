@@ -9,8 +9,8 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
-const cookieParser = require('cookie-parser');
-const cookieSession = require('cookie-session');
+// const cookieParser = require('cookie-parser');
+// const cookieSession = require('cookie-session');
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -23,13 +23,12 @@ db.connect();
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 
-
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'Key2'],
-}));
+// app.use(cookieParser());
+// app.use(cookieSession({
+//   name: 'session',
+//   keys: ['key1', 'Key2'],
+// }));
 app.set("view engine", "ejs");
 app.use("/styles", sass({
   src: __dirname + "/styles",
@@ -43,20 +42,22 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const index  = require("./routes/index");
+const createPoll = require("./routes/createPoll")
+const userPoll = require("./routes/userPoll")
+const vote_result = require("./routes/vote_result")
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
-// Note: mount other resources here, using the same pattern above
+app.use('/', index)
+app.use('/', createPoll)
+app.use('/', userPoll)
+app.use('/', vote_result)
 
 
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
-app.get("/", (req, res) => {
-  res.render("index");
-});
+
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
