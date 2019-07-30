@@ -23,18 +23,20 @@
 
     <main>
       <section>
-        <form id="addOption" method="POST" action="/createPoll">
+        <form name="poll" method="POST" action="/createPoll">
+          <div><input class="makePollButton" type="submit" value="Submit Poll"></div>
           <h1>Create a Question!</h1>
           <textarea class="questionBox" name="text" placeholder="What should we do this Friday?"></textarea>
           <h1>Options</h1>
           <div class="optionBox">
-            <textarea class="optionBox" name="text" placeholder="Enter option"></textarea>
-
+            <textarea class="optionBox" name="text" placeholder="Stanley Park Biking"></textarea>
           </div>
-            <input id="addOption" type="submit" value="Add Option">
-            <input id="makePollButton" type="submit" value="Make Poll">
-
         </form>
+          <form class="addOption" method="POST" action="/createPoll">
+            <input class="makePollButton" type="submit" value="Add Option">
+          </form>
+
+
 
       </section>
     </main>
