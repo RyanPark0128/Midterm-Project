@@ -31,4 +31,20 @@ router.post('/login', (req, res) => {
 
 })
 
+router.get("/login", (req, res) => {
+  //check if user is logged in
+  //if user is logged in render to create polls page
+  //if they have any polls else render to polls
+  //if user isn't logged in render to login page...
+  console.log ("login")
+  res.render('login');
+
+});
+
+router.get("/", requiresLogin, (req, res) => {
+console.log("cookie is:", req.session.userId, "using routing / get to createpoll");
+res.redirect('/createPoll');
+
+});
+
 module.exports = router;
