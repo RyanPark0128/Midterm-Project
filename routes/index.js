@@ -6,9 +6,15 @@ const dbParams = require('../lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
-router.post('/', (req, res) => {
-    res.redirect('/createPoll');
-})
+router.post('/login', (req, res) => {
+  db.query(`INSERT INTO admins (email) VALUES ('${req.body['email']}')`)
+  .then(() => {
+  })
+  .catch(err => {
+    res
+      .status(500)
+      .json({ error: err.message});
+  });
 
 router.get("/", (req, res) => {
 
