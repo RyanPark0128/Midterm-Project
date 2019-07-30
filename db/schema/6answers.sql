@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS answers CASCADE;
+
+CREATE TABLE answers (
+  id SERIAL PRIMARY KEY NOT NULL,
+  option_id INTEGER REFERENCES options(id) ON DELETE CASCADE,
+  submission_id INTEGER REFERENCES submissions(id) ON DELETE CASCADE,
+  rank SMALLINT NOT NULL /* DEFAULT 0??? */
+);
