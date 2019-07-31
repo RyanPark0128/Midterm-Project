@@ -22,13 +22,25 @@
     } );
   </script>
   <script>
-  $(document).ready(() => {
-    $(".sortable").empty();
-    for (i=1; i < 5; i++) {
-      let $option = $('<li>').addClass("ui-state-default").text(i);
-      $('.sortable').prepend($option);
+    $(document).ready(() => {
+      $(".sortable").empty();
+      for (i=1; i < 50; i++) {
+        let $option = $('<li>').addClass("ui-state-default").text(i);
+        $('.sortable').prepend($option);
+      }
+    })
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+      if (document.body.scrollTop > 700 || document.documentElement.scrollTop > 700) {
+        document.getElementById("myBtn").style.display = "block";
+      } else {
+        document.getElementById("myBtn").style.display = "none";
+      }
     }
-  })
+
+function topFunction() {
+  document.documentElement.scrollTop = 0;
+}
   </script>
 </head>
   <body>
@@ -63,6 +75,7 @@
         </h3>
       </section>
     </main>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
   </body>
 </html>
 

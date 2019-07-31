@@ -11,7 +11,7 @@ router.get("/userPoll/:id", (req, res) => {
   res.render("userPoll");
 });
 
-router.post("/userPoll", (req, res) => {
+router.post("/userPoll/:id", (req, res) => {
     res.redirect("/vote_result")
   });
 
