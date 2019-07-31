@@ -9,6 +9,7 @@ router.get("/createPoll", requiresLogin, (req, res) => {
 });
 
 router.post("/createPoll", requiresLogin, (req, res) => {
+
   console.log(req.body);
   for (let elt of req.body['option']){
   console.log(elt)
