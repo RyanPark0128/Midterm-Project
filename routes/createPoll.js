@@ -38,10 +38,10 @@ db.query(`INSERT INTO surveys (survey_id, choice, description) VALUES ('${elt}')
       .status(500)
       .json({ error: err.message});
   });
-
-res.redirect("/vote_result")
 });
 */
+
+res.redirect("/vote_result")
 
 
 
