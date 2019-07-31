@@ -9,9 +9,40 @@ router.get("/createPoll", requiresLogin, (req, res) => {
 });
 
 router.post("/createPoll", requiresLogin, (req, res) => {
+  console.log(req.body);
+  for (let elt of req.body['option']){
+  console.log(elt)
+}
+  /*
+  need to randomly generate code for admins link, respondents link
+  */
+/*   for (elt in req.body['option']){
+    db.query(`INSERT INTO options (survey_id, choice, description) VALUES ('${elt}')`)
+  .then(() => {
+  })
+  .catch(err => {
+    res
+      .status(500)
+      .json({ error: err.message});
+  });
+};
 
-  res.redirect("/vote_result")
+
+db.query(`INSERT INTO surveys (survey_id, choice, description) VALUES ('${elt}')`)
+  .then(() => {
+  })
+  .catch(err => {
+    res
+      .status(500)
+      .json({ error: err.message});
+  }); */
+
+res.redirect("/vote_result")
+
+
+
 });
+
 
 module.exports = router;
 //tracks tweets and updates them
