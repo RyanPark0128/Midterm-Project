@@ -25,12 +25,14 @@
         <form method="POST" action="/">
           <h1>Poll Results</h1>
           <img src="http://sites.utexas.edu/sos/files/2015/07/piefreq.png">
-
-          <div>
-            <input id="finishButton" type="submit" value="Create Your Own Poll">
-          </div>
         </form>
-        
+        <form method="GET" action="/createPoll">
+            <input id="createAnotherPollButton" type="submit" value="Create Your Own Poll">
+        </form>
+        <form method="GET" action="/login">
+            <input id="finishButton" type="submit" value="Logout">
+            <!-- Hide finishButton if no cookie is set -->
+        </form>
       </section>
     </main>
   </body>
