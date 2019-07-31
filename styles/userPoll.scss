@@ -9,6 +9,9 @@ h3 {
 }
 .sortable {
   list-style-type: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -17,10 +20,13 @@ h3 {
 
 .sortable li {
   margin: 0 5px 5px 5px;
-  padding: 1.5em;
-  padding-left: 1.5em;
+  padding-top:20px;
+  text-align:left;
   font-size: 1.0em;
-  height: 70px;
+  height: 125px;
+  padding-left: 20px;
+  width: 70%;
+  border-radius: 20px;
 }
 .sortable li span {
   position: absolute;
@@ -41,4 +47,9 @@ h3 {
   padding: 15px;
   border-radius: 10px;
   font-size: 18px;
+}
+
+.descript {
+  font-size: 15px;
+  padding-top: 12px;
 }

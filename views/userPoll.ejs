@@ -24,9 +24,11 @@
   <script>
     $(document).ready(() => {
       $(".sortable").empty();
-      for (i=1; i < 50; i++) {
+      for (i=1; i < 5; i++) {
         let $option = $('<li>').addClass("ui-state-default").text(i);
-        $('.sortable').prepend($option);
+        let $description = $('<p>').addClass("descript").text("description");
+          $option.append($description)
+          $('.sortable').prepend($option)
       }
     })
     window.onscroll = function() {scrollFunction()};
@@ -53,7 +55,7 @@ function topFunction() {
     
     <main>
       <section>
-        <h1>Title of Survey</h1>
+        <h1 id = "title"><%= title %></h1>
         <h3>Drag and drop your Options to Rank from Best to Worst
         <br></br>
           <form id = form method="POST" action="/userPoll ">
