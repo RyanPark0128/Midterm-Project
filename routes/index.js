@@ -7,7 +7,7 @@ const db = new Pool(dbParams);
 db.connect();
 
 router.post('/login', (req, res) => {
-  db.query(`INSERT INTO admins (email) VALUES ('${req.body['email']}')`)
+  db.query(`INSERT INTO admins (email) VALUES ('${req.body['text']}')`)
   .then(() => {
   })
   .catch(err => {
@@ -15,7 +15,7 @@ router.post('/login', (req, res) => {
       .status(500)
       .json({ error: err.message});
   });
-  req.session.userId = req.body['email'];
+  req.session.userId = req.body['text'];
 /*   db.query(`SELECT * FROM admins;`)
   .then(data => {
     const admins = data.rows;
@@ -32,7 +32,7 @@ router.post('/login', (req, res) => {
 
 router.get("/login", (req, res) => {
   console.log("cookie is:", req.session.userId, "using routing / get to login");
-  res.render('login');
+  res.render('index');
 });
 
 router.get("/", requiresLogin, (req, res) => {
