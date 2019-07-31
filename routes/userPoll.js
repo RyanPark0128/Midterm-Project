@@ -21,6 +21,8 @@ const getUserWithLink = function(link) {
     `,[link])
     .then(res => console.log(res.rows[0].email))
 }
+
+
 //Kira@google.com
 
 module.exports = router;
