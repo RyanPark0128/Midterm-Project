@@ -17,8 +17,8 @@ router.post("/createPoll", requiresLogin, (req, res) => {
   /*
   need to randomly generate code for admins link, respondents link
   */
-/*   for (elt in req.body['option']){
-    db.query(`INSERT INTO options (survey_id, choice, description) VALUES ('${elt}')`)
+ /*  for (let i = 0; i < req.body['option'].length; i++) {
+    db.query(`INSERT INTO options (survey_id, choice, description) VALUES ('${survey_id}, ${req.body['option'][i]}, ${req.body['description'][i]}')`)
   .then(() => {
   })
   .catch(err => {
@@ -26,6 +26,7 @@ router.post("/createPoll", requiresLogin, (req, res) => {
       .status(500)
       .json({ error: err.message});
   });
+
 };
 
 
@@ -36,12 +37,12 @@ db.query(`INSERT INTO surveys (survey_id, choice, description) VALUES ('${elt}')
     res
       .status(500)
       .json({ error: err.message});
-  }); */
+  });
 
 res.redirect("/vote_result")
 
 
-
+ */
 });
 
 
