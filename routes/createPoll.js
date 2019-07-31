@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const {requiresLogin} = require('../lib/middleware/authentication.js')
+const { Pool } = require('pg');
+const dbParams = require('../lib/db.js');
+const db = new Pool(dbParams);
+db.connect();
 const generateRandomString = require('../helper');
 
 
@@ -10,14 +14,30 @@ router.get("/createPoll", requiresLogin, (req, res) => {
   res.render("createPoll")
 });
 
-
 router.post("/createPoll", requiresLogin, (req, res) => {
-  const userCode = generateRandomString();
   const adminCode = generateRandomString();
-  /*
-  need to randomly generate code for admins link, respondents link
-  */
- /*  for (let i = 0; i < req.body['option'].length; i++) {
+  const respondent_code = generateRandomString();
+
+  db.query(`INSERT INTO surveys (admin_id, admin_code, respondent_code, title) VALUES (${req.session.userId}, ${adminCode}, ${respondent_code}, ${req.body['title']}`)
+  .then(() => {
+  })
+  .catch(err => {
+    res
+      .status(500)
+      .json({ error: err.message});
+  });
+
+  console.log(db.query(`SELECT id FROM admins WHERE email = ${req.session.userId};`)
+  .then(data => {
+    res.json({data});
+  })
+  .catch(err => {
+    res
+      .status(500)
+      .json({ error: err.message });
+  }));
+
+  for (let i = 0; i < req.body['option'].length; i++) {
     db.query(`INSERT INTO options (survey_id, choice, description) VALUES ('${survey_id}, ${req.body['option'][i]}, ${req.body['description'][i]}')`)
   .then(() => {
   })
@@ -26,29 +46,8 @@ router.post("/createPoll", requiresLogin, (req, res) => {
       .status(500)
       .json({ error: err.message});
   });
-
 };
-
-
-db.query(`INSERT INTO surveys (survey_id, choice, description) VALUES ('${elt}')`)
-  .then(() => {
-  })
-  .catch(err => {
-    res
-      .status(500)
-      .json({ error: err.message});
-  });
-
 res.redirect("/vote_result")
 });
-*/
-
-
-
-});
-
-
-
-
 module.exports = router;
 //tracks tweets and updates them
