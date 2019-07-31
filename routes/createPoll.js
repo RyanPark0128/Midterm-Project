@@ -46,11 +46,15 @@ router.post("/createPoll", requiresLogin, (req, response) => {
       response
       .status(500)
       .json({ error: err.message});
+
     })
   response.redirect('/vote_result');
+
 });
 
 module.exports = router;
+
+res.redirect("/vote_result")
 
 
 

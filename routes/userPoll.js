@@ -5,24 +5,25 @@ const dbParams = require('../lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
-router.get("/userPoll/:id", (req, res) => {
-  console.log(req.params.id)
-  getUserWithLink(req.params.id)
-  res.render("userPoll");
-});
+router.get("/userPoll/:id", (req, response) => {
+  
+  db.query(`
+    SELECT * FROM surveys WHERE respondent_code = $1
+    `,[req.params.id])
+    .then(res => {
+      const title = res.rows[0].title
+      response.render("userPoll", {title});
+    }
+  )
+  })
 
-router.post("/userPoll", (req, res) => {
+router.post("/userPoll/:id", (req, res) => {
     res.redirect("/vote_result")
   });
 
-const getUserWithLink = function(link) {
-  return db.query(`
-    SELECT * FROM admins WHERE email = $1
-    `,[link])
-    .then(res => console.log(res.rows[0].email))
-}
-
-
 //Kira@google.com
+//   1 |        1 | 12345      | 55555           | dinner
+//   2 |        2 | 23456      | 44444           | saturday
+//   3 |        3 | 45678      | 88888           | party
 
 module.exports = router;
