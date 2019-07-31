@@ -9,16 +9,11 @@ router.get("/createPoll", requiresLogin, (req, res) => {
   console.log("req.session.userId):",req.session.userId, "cookie session set, directed to render createpoll")
   res.render("createPoll")
 });
+
+
+router.post("/createPoll", requiresLogin, (req, res) => {
   const userCode = generateRandomString();
   const adminCode = generateRandomString();
-  res.redirect("/vote_result")
-router.post("/createPoll", requiresLogin, (req, res) => {
-
-
-  console.log(req.body);
-  for (let elt of req.body['option']){
-  console.log(elt)
-}
   /*
   need to randomly generate code for admins link, respondents link
   */
@@ -45,11 +40,8 @@ db.query(`INSERT INTO surveys (survey_id, choice, description) VALUES ('${elt}')
   });
 
 res.redirect("/vote_result")
-
-
- */
 });
-
+*/
 
 
 
