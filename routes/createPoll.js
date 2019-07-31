@@ -14,20 +14,23 @@ router.get("/createPoll", requiresLogin, (req, res) => {
   res.render("createPoll")
 });
 
-router.post("/createPoll", requiresLogin, (req, res) => {
+router.post("/createPoll", requiresLogin, (req, response) => {
   const adminCode = generateRandomString();
-  const respondent_code = generateRandomString();
-
-  db.query(`INSERT INTO surveys (admin_id, admin_code, respondent_code, title) VALUES (${req.session.userId}, ${adminCode}, ${respondent_code}, ${req.body['title']}`)
-  .then(() => {
+  const respondentCode = generateRandomString();
+  //Parameterized query needs to be added
+  // need to sequence promises
+  console.log(req.session.userId, "1---2")
+  let adminId;
+  let surveyId;
+    db.query(`SELECT id FROM admins WHERE email = '${req.session.userId}';`)
+    .then(res => {
+    let hold = res.rows;
+    console.log(hold[0]['id'],'1---3');
+    adminId = hold[0]['id'];
+    return db.query(`INSERT INTO surveys (admin_id, admin_code, respondent_code, title) VALUES (${adminId}, '${adminCode}', '${respondentCode}', '${req.body['title']}') RETURNING "id"`)
   })
-  .catch(err => {
-    res
-      .status(500)
-      .json({ error: err.message});
-  });
-
-  console.log(db.query(`SELECT id FROM admins WHERE email = ${req.session.userId};`)
+    //Parameterized query needs to be added, can be shorten using above with returning??!?!? i think
+/*   let surveyId = db.query(`SELECT SCOPE_IDENTITY()`)
   .then(data => {
     res.json({data});
   })
@@ -35,19 +38,31 @@ router.post("/createPoll", requiresLogin, (req, res) => {
     res
       .status(500)
       .json({ error: err.message });
-  }));
-
-  for (let i = 0; i < req.body['option'].length; i++) {
-    db.query(`INSERT INTO options (survey_id, choice, description) VALUES ('${survey_id}, ${req.body['option'][i]}, ${req.body['description'][i]}')`)
-  .then(() => {
+  }); */
+  .then(res => {
+    console.log(res, "2--1")
+    surveyId = res.rows[0]['id'];
+    for (let i = 0; i < req.body['option'].length; i++) {
+      console.log('1---4');
+      db.query(`INSERT INTO options (survey_id, choice, description, total_rank) VALUES (${surveyId}, '${req.body['option'][i]}', '${req.body['description'][i]}', 0)`)
+    .then(() => {
+      console.log('1---5');
+    })
+    .catch(err => {
+      response
+        .status(500)
+        .json({ error: err.message});
   })
-  .catch(err => {
-    res
-      .status(500)
-      .json({ error: err.message});
+}
   });
-};
-res.redirect("/vote_result")
+
 });
+  //Parameterized query needs to be added
 module.exports = router;
 //tracks tweets and updates them
+
+
+
+
+
+

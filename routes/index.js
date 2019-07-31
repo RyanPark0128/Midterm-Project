@@ -7,6 +7,8 @@ const db = new Pool(dbParams);
 db.connect();
 
 router.post('/login', (req, res) => {
+    //Parameterized query needs to be added
+
   db.query(`INSERT INTO admins (email) VALUES ('${req.body['text']}')`)
   .then(() => {
   })
@@ -16,6 +18,8 @@ router.post('/login', (req, res) => {
       .json({ error: err.message});
   });
   req.session.userId = req.body['text'];
+    //Parameterized query needs to be added
+
 /*   db.query(`SELECT * FROM admins;`)
   .then(data => {
     const admins = data.rows;
