@@ -1,14 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const {requiresLogin} = require('../lib/middleware/authentication.js')
+const generateRandomString = require('../helper');
+
 
 //requiresLogin check if user is logged in
 router.get("/createPoll", requiresLogin, (req, res) => {
   console.log("req.session.userId):",req.session.userId, "cookie session set, directed to render createpoll")
   res.render("createPoll")
 });
-
+  const userCode = generateRandomString();
+  const adminCode = generateRandomString();
+  res.redirect("/vote_result")
 router.post("/createPoll", requiresLogin, (req, res) => {
+
 
   console.log(req.body);
   for (let elt of req.body['option']){
@@ -44,6 +49,13 @@ res.redirect("/vote_result")
 
  */
 });
+
+
+
+
+});
+
+
 
 
 module.exports = router;
