@@ -25,11 +25,9 @@
   </script>
   <script>
     $(document).ready(() => {
-
-      const data = $( ".sortable" ).sortable( "serialize", { key: "sort" } );
-      console.log(data)
+      console.log($(".descript").serialize())
       $("#form").submit(function(event) {
-        $.post("/userPoll/:id", data.items)
+        console.log($("#form").serialize())
       })
     })
     
