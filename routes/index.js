@@ -17,6 +17,7 @@ router.post('/login', (req, res) => {
       .status(500)
       .json({ error: err.message});
   });
+  //uodate with admin id
   req.session.userId = req.body['text'];
     //Parameterized query needs to be added
 
