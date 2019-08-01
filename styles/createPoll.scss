@@ -1,11 +1,21 @@
 .questionBox {
+  resize: none;
   width: 800px;
+  outline:none;
   text-align: center;
   display: inline-block;
+  border-radius: 20px;
+  font-size: 2em;
+  resize: none;
+  align: center;
 }
 
 #optionBox {
   width: 500px;
+  text-align: center;
+  border-radius: 20px;
+  resize: none;
+  font-size: 1.5em;
 }
 
 // .makePollButton {
@@ -59,4 +69,20 @@
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   transition: all 0.3s ease 0s;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 18px;
 }
