@@ -5,9 +5,8 @@ const dbParams = require('../lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
-router.get("/userPoll/:id", (req, response) => {
-  
-  db.query(`
+
+router.get("/userPoll/:id", (req, res) => {
   SELECT surveys.id, title, options.choice, options.description
   FROM surveys
   JOIN options ON surveys.id = survey_id
@@ -25,7 +24,8 @@ router.get("/userPoll/:id", (req, response) => {
       response.render("userPoll", {title, numOptions, opt, desc});
     }
   )
-  })
+ })
+
 
 router.post("/userPoll", (req, res) => {
   console.log(req.body)
@@ -39,7 +39,7 @@ router.post("/userPoll", (req, res) => {
   res.redirect("/vote_result")
   });
 
-//Kira@google.com
+//Kira@google.com    http://localhost:8080/userpoll/55555
 //   1 |        1 | 12345      | 55555           | dinner
 //   2 |        2 | 23456      | 44444           | saturday
 //   3 |        3 | 45678      | 88888           | party
