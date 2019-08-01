@@ -13,11 +13,17 @@
   </head>
 
   <body>
-    <nav class="header">
+   <nav class="header">
       <h1 href="/">iWant</h1>
-      <div>
-        <input type="submit" value="Create New Poll">
-      </div>
+      <%# <div class="headerButtons"> %>
+      <form method="GET" action="/createPoll">
+        <div class="button_cont" align="center">
+          <a class="headerNewPoll" target="_blank" rel="nofollow noopener">Create New Poll</a>
+      
+        <%# <input class="headerNewPoll" type="submit" value="Create New Poll"> %>
+        <%# <input class="headerLogin" type="submit" value="Login"> %>
+        </div>
+      </form>
     </nav>
     
     <main>
@@ -27,12 +33,16 @@
           <img src="http://sites.utexas.edu/sos/files/2015/07/piefreq.png">
         </form>
         <form method="GET" action="/createPoll">
-            <input id="createAnotherPollButton" type="submit" value="Create Your Own Poll">
+            <%# <input id="createAnotherPollButton" type="submit" value="Create Another Poll"> %>
+
+          <div class="button_cont" align="center">
+            <input id="createAnotherPollButton" type="submit" value="Create Another Poll">
+          </div>
         </form>
-        <form method="GET" action="/login">
+        <%# <form method="GET" action="/login">
             <input id="finishButton" type="submit" value="Logout">
             <!-- Hide finishButton if no cookie is set -->
-        </form>
+        </form> %>
       </section>
     </main>
   </body>

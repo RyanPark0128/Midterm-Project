@@ -24,12 +24,16 @@
     // $.(ajax)
   </script>
   <script>
-    $(document).ready(() => {
 
-      const data = $( ".sortable" ).sortable( "serialize", { key: "sort" } );
-      console.log(data)
+    $(document).ready(() => {
+      const ranks = {}
+      const options = $(".ui-state-default").length
+      // console.log($(".ui-state-default")[0].childNodes[0].data)
       $("#form").submit(function(event) {
-        $.post("/userPoll/:id", data.items)
+        for (i = 0; i < options; i++ ) {
+          ranks[$(".ui-state-default")[i].childNodes[0].data] = i
+        }
+        $.post("/userPoll", ranks)
       })
     })
 
@@ -68,9 +72,7 @@ function topFunction() {
           <form id = "form">
             <ul class="sortable">
               <%  for (i=0; i < numOptions; i++) { %>
-                  <li class="ui-state-default">Title : <%= opt[i] %>
-                    <p class = "descript">Description : <%= desc[i] %> </p>
-                  </li>
+                  <li class="ui-state-default"><%= opt[i] %><p class = "descript"><%= desc[i] %></p></li>
               <% } %>
             </ul>
             <button id="but">Submit</button>

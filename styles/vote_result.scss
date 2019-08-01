@@ -1,11 +1,35 @@
-#createAnotherPollButton {
-  width: 300px;
-  height: 50px;
-  margin-top: 20px;
-}
+// #createAnotherPollButton {
+//   width: 300px;
+//   height: 50px;
+//   margin-top: 20px;
+// }
 
 #finishButton {
   width: 300px;
   height: 50px;
   margin-top: 20px;
+}
+
+#createAnotherPollButton {
+  border: none;
+  background: #404040;
+  color: #ffffff !important;
+  font-weight: 100;
+  padding: 20px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  margin: 20px;
+  }
+
+  #createAnotherPollButton:hover {
+  color: #404040 !important;
+  background-color: white;
+  font-weight: 700 !important;
+  letter-spacing: 3px;
+  // background: none;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.3s ease 0s;
 }
