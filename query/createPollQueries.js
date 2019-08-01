@@ -4,32 +4,24 @@ const db = new Pool(dbParams);
 db.connect();
 
 const generateRandomString = require('../helper');
+const adminCode = generateRandomString();
+const respondentCode = generateRandomString();
 
-function insertAdminEmailReturnId(req, res, next){
-                                              //Parameterized query needs to be added
-  db.query(`INSERT INTO admins (email) VALUES ('${req.body['text']}') RETURNING "id"` )
-  .then((id) => {
-    //update session with admin id
-    req.session.userId = id.rows[0]['id']
-    next()
-  })
-  .catch(err => {
-    res
-      .status(500)
-      .json({ error: err.message});
-  });
-}
+
 
 function getAdminIdWithCookie (req){
-  let surveyId;
-  const adminCode = generateRandomString();
-  const respondentCode = generateRandomString();
+  const updateSurveyToDbQuery =
+`INSERT INTO surveys
+(admin_id, admin_code, respondent_code, title)
+VALUES (${req.session.userId}, '${adminCode}', '${respondentCode}', '${req.body['title']}')
+RETURNING "id"`;
+
                                     //Parameterized query needs to be added
                                     //chang cookie to userid
-  db.query(`INSERT INTO surveys (admin_id, admin_code, respondent_code, title) VALUES (${req.session.userId}, '${adminCode}', '${respondentCode}', '${req.body['title']}') RETURNING "id"`)
+  db.query(updateSurveyToDbQuery)
     .then(res => {
       console.log(res, "2--1")
-      surveyId = res.rows[0]['id'];
+      const surveyId = res.rows[0]['id'];
       for (let i = 0; i < req.body['option'].length; i++) {
         console.log('1---4');
                                                       //Parameterized query needs to be added
@@ -48,4 +40,4 @@ function getAdminIdWithCookie (req){
     return
   }
 
-module.exports = {getAdminIdWithCookie, insertAdminEmailReturnId};
+module.exports = {getAdminIdWithCookie};

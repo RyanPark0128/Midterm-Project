@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const {requiresLogin} = require('../lib/middleware/authentication.js')
-const {getAdminIdWithCookie} = require('../query/createPollQuery.js/index.js')
+const {requiresLogin} = require('../lib/middleware/authentication')
+const {getAdminIdWithCookie} = require('../query/createPollQueries')
 
 //requiresLogin check if user is logged in
 router.get("/createPoll", requiresLogin, (req, response) => {

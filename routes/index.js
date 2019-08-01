@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const {requiresLogin} = require('../lib/middleware/authentication.js')
-const {insertAdminEmailReturnId} = require('../query/first.js')
+const {requiresLogin} = require('../lib/middleware/authentication')
+const {insertAdminEmailReturnId} = require('../query/loginQueries')
 
 router.post('/login', (req, res) => {
   //updates session cookies with admin id in here
