@@ -7,16 +7,13 @@ db.connect();
 
 
 router.get("/userPoll/:id", (req, res) => {
-  db.query(`SELECT title FROM surveys WHERE respondent_code = '${req.params.id}'`)
+ /*  db.query(`SELECT title FROM surveys WHERE respondent_code = '${req.params.id}'`)
     .then(res => {
-      litle = res.rows[0]
+      litle = res.rows[0] */
 
-      console.log(title, "1")
-      response.render("userPoll", title['title']);
+    res.render("userPoll"/* , title['title'] */);
+    })
 
-    }
-  )
-  })
 router.post("/userPoll", (req, res) => {
     res.redirect("/vote_result")
   });

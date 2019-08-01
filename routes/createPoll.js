@@ -9,6 +9,7 @@ router.get("/createPoll", requiresLogin, (req, response) => {
 });
                          //requiresLogin check if user is logged in
 router.post("/createPoll", requiresLogin, (req, response) => {
+  //change name to explain its also updating databases i think
   getAdminIdWithCookie(req)
   response.redirect('/vote_result');
 });

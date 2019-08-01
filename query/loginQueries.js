@@ -5,13 +5,13 @@ db.connect();
 
 function insertAdminEmailReturnId(req, res, next){
   const email = req.body['text'];
-  const updateAdminToDbReturnId =
+  const updateAdminReturnId =
   `INSERT INTO admins (email)
    VALUES ('${email}')
    RETURNING "id"` ;
 
   //Parameterized query needs to be added
-  db.query(updateAdminToDbReturnId)
+  db.query(updateAdminReturnId)
     .then((id) => {
       //update session with admin id
       req.session.userId = id.rows[0]['id']
