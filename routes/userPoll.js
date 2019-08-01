@@ -8,17 +8,28 @@ db.connect();
 router.get("/userPoll/:id", (req, response) => {
   
   db.query(`
-    SELECT * FROM surveys WHERE respondent_code = $1
-    `,[req.params.id])
+  SELECT surveys.id, title, options.choice, options.description
+  FROM surveys
+  JOIN options ON surveys.id = survey_id
+  WHERE respondent_code = $1
+  `,[req.params.id])
     .then(res => {
+      const numOptions = res.rows.length
+      const opt = []
+      const desc = []
+      for (i = 0; i < numOptions; i++) {
+        opt.push(res.rows[i].choice)
+        desc.push(res.rows[i].description)
+      }
       const title = res.rows[0].title
-      response.render("userPoll", {title});
+      response.render("userPoll", {title, numOptions, opt, desc});
     }
   )
   })
 
 router.post("/userPoll/:id", (req, res) => {
-    res.redirect("/vote_result")
+  console.log(req.body)
+  res.redirect("/vote_result")
   });
 
 //Kira@google.com

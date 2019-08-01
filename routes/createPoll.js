@@ -54,8 +54,6 @@ router.post("/createPoll", requiresLogin, (req, response) => {
 
 module.exports = router;
 
-res.redirect("/vote_result")
-
 
 
 
