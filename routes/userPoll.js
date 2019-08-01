@@ -6,7 +6,8 @@ const db = new Pool(dbParams);
 db.connect();
 
 
-router.get("/userPoll/:id", (req, res) => {
+router.get("/userPoll/:id", (req, response) => {
+  db.query(`
   SELECT surveys.id, title, options.choice, options.description
   FROM surveys
   JOIN options ON surveys.id = survey_id
@@ -24,7 +25,7 @@ router.get("/userPoll/:id", (req, res) => {
       response.render("userPoll", {title, numOptions, opt, desc});
     }
   )
- })
+  })
 
 
 router.post("/userPoll", (req, res) => {
