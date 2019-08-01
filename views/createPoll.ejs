@@ -13,27 +13,45 @@
   </head>
 
   <body>
-    <nav class="header">
+   <nav class="header">
       <h1 href="/">iWant</h1>
-      <div class="headerButtons">
-        <input class="headerNewPoll" type="submit" value="Create New Poll">
-        <input class="headerLogin" type="submit" value="Login">
-      </div>
+      <%# <div class="headerButtons"> %>
+      <form method="GET" action="/createPoll">
+        <div class="button_cont" align="center">
+          <a class="headerNewPoll" target="_blank" rel="nofollow noopener">Create New Poll</a>
+      
+        <%# <input class="headerNewPoll" type="submit" value="Create New Poll"> %>
+        <%# <input class="headerLogin" type="submit" value="Login"> %>
+        </div>
+      </form>
     </nav>
 
     <main>
       <section>
-        <form name="poll" method="POST" action="/createPoll">
-          <div><input class="makePollButton" type="submit" value="Submit Poll"></div>
+        <form id="makePollButton" name="poll" method="POST" action="/createPoll">
+          <%# <div><input class="makePollButton" type="submit" value="Submit Poll"></div> %>
           <h1>Create a Question!</h1>
           <textarea class="questionBox" name="title" placeholder="What should we do this Friday?"></textarea>
           <h1>Options</h1>
           <div class="optionBox">
           </div>
         </form>
-          <form class="addOption">
-            <input class="makePollButton" type="submit" value="Add Option">
-          </form>
+
+        <%# <a class="addOption" type="submit" target="_blank" rel="nofollow noopener">Add Option</a> %>
+
+        <%# <input id="addOption" type="submit" target="_blank" rel="nofollow noopener" value="Add Option"> %>
+        
+
+        <form class="addOption">
+          <div class="button_cont" align="center">
+            <input id="addOption" type="submit" target="_blank" rel="nofollow noopener" value="Add Option">
+          </div>
+        </form>
+        
+        <div class="button_cont" align="center">
+          <input form="makePollButton" class="makePollButton" type="submit" value="Submit Poll">
+        </div>
+        
 
 
 
