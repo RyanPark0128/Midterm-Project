@@ -6,6 +6,7 @@ const db = new Pool(dbParams);
 db.connect();
 
 
+
 router.get("/userPoll/:id", (req, response) => {
   db.query(`
   SELECT surveys.id, title, options.choice, options.description
@@ -26,6 +27,7 @@ router.get("/userPoll/:id", (req, response) => {
     }
   )
   })
+
 
 
 router.post("/userPoll", (req, res) => {

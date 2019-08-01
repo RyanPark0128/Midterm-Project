@@ -14,8 +14,8 @@ router.get("/login", (req, res) => {
   res.render('index');
 });
 
-router.get("/", requiresLogin, (req, res) => {
+/* router.get("/", requiresLogin, (req, res) => {
   res.redirect('/createPoll');
 });
-
+ */
 module.exports = router;
