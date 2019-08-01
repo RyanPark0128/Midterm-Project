@@ -3,7 +3,6 @@ const router = express.Router();
 const {requiresLogin} = require('../lib/middleware/authentication.js')
 const {getAdminIdWithCookie} = require('../query/first.js')
 
-
 //requiresLogin check if user is logged in
 router.get("/createPoll", requiresLogin, (req, response) => {
   console.log("req.session.userId):",req.session.userId, "cookie session set, directed to render createpoll")
