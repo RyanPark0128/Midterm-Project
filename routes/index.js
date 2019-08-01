@@ -9,39 +9,25 @@ db.connect();
 router.post('/login', (req, res) => {
     //Parameterized query needs to be added
 
-  db.query(`INSERT INTO admins (email) VALUES ('${req.body['text']}')`)
-  .then(() => {
+  db.query(`INSERT INTO admins (email) VALUES ('${req.body['text']}') RETURNING "id"` )
+  .then((id) => {
+    req.session.userId = id.rows[0]['id']
   })
   .catch(err => {
     res
       .status(500)
       .json({ error: err.message});
   });
-  //uodate with admin id
+  //update session with admin id
   req.session.userId = req.body['text'];
-    //Parameterized query needs to be added
-
-/*   db.query(`SELECT * FROM admins;`)
-  .then(data => {
-    const admins = data.rows;
-    res.json({ admins });
-  })
-  .catch(err => {
-    res
-      .status(500)
-      .json({ error: err.message });
-  }); */
-  console.log("setting cookie to:", req.session.userId, "using routing /login post");
   res.redirect('/createPoll');
 })
 
 router.get("/login", (req, res) => {
-  console.log("cookie is:", req.session.userId, "using routing / get to login");
   res.render('index');
 });
 
 router.get("/", requiresLogin, (req, res) => {
-  console.log("cookie is:", req.session.userId, "using routing / get to createpoll");
   res.redirect('/createPoll');
 });
 
