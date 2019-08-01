@@ -14,10 +14,15 @@
   <body>
     <nav class="header">
       <h1 href="/">iWant</h1>
-      <div class="headerButtons">
-        <input class="headerNewPoll" type="submit" value="Create New Poll">
-        <input class="headerLogin" type="submit" value="Login">
-      </div>
+      <%# <div class="headerButtons"> %>
+      <form method="GET" action="/createPoll">
+        <div class="button_cont" align="center">
+          <a class="headerNewPoll" target="_blank" rel="nofollow noopener">Create New Poll</a>
+      
+        <%# <input class="headerNewPoll" type="submit" value="Create New Poll"> %>
+        <%# <input class="headerLogin" type="submit" value="Login"> %>
+        </div>
+      </form>
     </nav>
 
     <main>
@@ -25,11 +30,14 @@
         <form method="POST" action="/login">
           <h1>Enter Your Email!</h1>
           <textarea class="enterEmail" name="text" placeholder="email@email.com"></textarea>
-
-          <div>
-            <input id="login" type="submit" value="Login your ass right now">
-          </div>
+          <div class="button_cont" align="center">
+          <input id="login" type="submit" target="_blank" rel="nofollow noopener" value="Login">
         </form>
+
+          <%# <div>
+            <input id="login" type="submit" value="Login your ass right now">
+          </div> %>
+       
       </section>
     </main>
   </body>
