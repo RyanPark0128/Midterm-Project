@@ -30,10 +30,22 @@
       const options = $(".ui-state-default").length
       // console.log($(".ui-state-default")[0].childNodes[0].data)
       $("#form").submit(function(event) {
+        event.preventDefault()
         for (i = 0; i < options; i++ ) {
           ranks[$(".ui-state-default")[i].childNodes[0].data] = i
         }
-        $.post("/userPoll", ranks)
+        $.ajax({
+          type: 'POST',
+          url: '/userPoll',
+          data: ranks,
+          success: function(data){
+            window.location = "/vote_result";
+          },
+          error: function(xhr, type, exception) { 
+          // if ajax fails display error alert
+          alert("ajax error response type "+type);
+          }
+        });
       })
     })
 
@@ -41,19 +53,19 @@
         // $.post("/userPoll/:id", event)
         // :id here won't mean anything because the server is expecing a variable where ':id' should be
       // })
-      window.onscroll = function() {scrollFunction()};
-      function scrollFunction() {
-        if (document.body.scrollTop > 700 || document.documentElement.scrollTop > 700) {
-          document.getElementById("myBtn").style.display = "block";
-        } else {
-          document.getElementById("myBtn").style.display = "none";
-        }
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+      if (document.body.scrollTop > 700 || document.documentElement.scrollTop > 700) {
+        document.getElementById("myBtn").style.display = "block";
+      } else {
+        document.getElementById("myBtn").style.display = "none";
       }
+    }
 
 
-function topFunction() {
-  document.documentElement.scrollTop = 0;
-}
+    function topFunction() {
+      document.documentElement.scrollTop = 0;
+    }
   </script>
 </head>
   <body>
