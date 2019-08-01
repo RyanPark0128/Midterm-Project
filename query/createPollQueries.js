@@ -10,6 +10,9 @@ const adminCode = generateRandomString();
 const respondentCode = generateRandomString();
 
 function getAdminIdWithCookie (req){
+  //change how i bring in data, remove
+  //fro req object and split it before
+  //the function is callled
   const adminId = req.session.userId;
   const title = req.body['title'];
   const updateSurveyToDb =
