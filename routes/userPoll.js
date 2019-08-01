@@ -27,8 +27,15 @@ router.get("/userPoll/:id", (req, response) => {
   )
   })
 
-router.post("/userPoll/:id", (req, res) => {
+router.post("/userPoll", (req, res) => {
   console.log(req.body)
+  // 1) we will first have to get total_rank data from the database specific to the survey
+  // 2) and get the current value of rank_total
+  // 3) and loop through that value (res.rows i think) and add the rank
+  // 4) then we can insert newly updated rank_total into the database using ALTER
+  // 5) Also when we post with AJAX, the redirect doesnt work on the routes (Andy told me) 
+  // so we will have to figure out way to redirect to vote_result page within the AJAX requset
+
   res.redirect("/vote_result")
   });
 
