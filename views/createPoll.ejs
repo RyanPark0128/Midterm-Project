@@ -52,9 +52,20 @@
           <input form="makePollButton" class="makePollButton" type="submit" value="Submit Poll">
         </div>
         
+        <script>    
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+          document.getElementById("myBtn").style.display = "block";
+        } else {
+          document.getElementById("myBtn").style.display = "none";
+        }}
+        function topFunction() {
+          document.documentElement.scrollTop = 0;
+        }
 
-
-
+        </script>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
       </section>
     </main>
   </body>
