@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/userPoll.css" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -58,16 +60,22 @@ function topFunction() {
 </head>
   <body>
     <nav class="header">
-      <h1>iWant</h1>
-      <div>
-        <input type="submit" value="Create New Poll">
-      </div>
+      <h1 href="/">iWant</h1>
+      <%# <div class="headerButtons"> %>
+      <form method="GET" action="/createPoll">
+        <div class="button_cont" align="center">
+          <input class="headerNewPoll" type="submit" target="_blank" rel="nofollow noopener" value="Create New Poll">
+      
+        <%# <input class="headerNewPoll" type="submit" value="Create New Poll"> %>
+        <%# <input class="headerLogin" type="submit" value="Login"> %>
+        </div>
+      </form>
     </nav>
 
     <main>
       <section>
-        <h1 id = "title"><%= title %></h1>
-        <h3>Drag and drop your Options to Rank from Best to Worst
+        <h1 class="font1" id = "title"><%= title %></h1>
+        <h3 class="font1">Drag and drop your Options to Rank from Best to Worst
         <br></br>
           <form id = "form">
             <ul class="sortable">
@@ -75,7 +83,11 @@ function topFunction() {
                   <li class="ui-state-default"><%= opt[i] %><p class = "descript"><%= desc[i] %></p></li>
               <% } %>
             </ul>
-            <button id="but">Submit</button>
+            
+            <div class="button_cont" align="center">
+              <input id="but" type="submit" value="Submit">
+            </div>
+            <%# <button id="but">Submit</button> %>
             <br></br>
           </form>
         </h3>
