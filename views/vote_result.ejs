@@ -24,30 +24,28 @@
       </form>
     </nav>
     <main>
-      <section>
-
-        <form method="POST" action="/">
-          <h1 class="font1">Poll Results</h1>
+      <section id = "container">
+          <h1 class="font1">Poll Results for :</h1>
+          <p>Survey title</p>
           <table style="width:100%">
             <tr>
-              <th>Options</th>
-              <th>Rank</th> 
+              <th id = "rankFont">Ranks</th>
+              <th id = "optionFont">Option</th> 
             <%  for (i=0; i < 5; i++) { %>
             </tr>
             <tr>
-              <td>optionName</td>
               <td>rank</td>
+              <td>optionName</td>
             </tr>
             <% } %>
           </table>
-
-          <img src="http://sites.utexas.edu/sos/files/2015/07/piefreq.png">
+          <br></br>
+      </section>
         <form method="GET" action="/createPoll">
           <div class="button_cont" align="center">
             <input id="createAnotherPollButton" type="submit" value="Create Another Poll">
           </div>
         </form>
-      </section>
     </main>
   </body>
 
