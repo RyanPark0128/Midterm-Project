@@ -7,7 +7,7 @@ db.connect();
 
 
 
-router.get("/userPoll/:id", (req, response) => {
+/* router.get("/userPoll/:id", (req, response) => {
   db.query(`
   SELECT surveys.id, title, options.choice, options.description
   FROM surveys
@@ -26,15 +26,40 @@ router.get("/userPoll/:id", (req, response) => {
       response.render("userPoll", {title, numOptions, opt, desc});
     }
   )
-  })
+  }) */
+
+
+  router.get("/userPoll/:id", (req, response) => {
+ db.query(`
+ SELECT surveys.id, surveys.title, options.choice, options.description, surveys.respondent_code
+ FROM surveys
+ JOIN options ON surveys.id = survey_id
+ WHERE respondent_code = $1
+ `,[req.params.id])
+   .then(res => {
+     console.log(res.rows)
+     const numOptions = res.rows.length
+     const survey_id = res.rows[0].id
+     const opt = []
+     const desc = []
+     const title = res.rows[0].title
+     const res_code = res.rows[0].respondent_code
+     for (i = 0; i < numOptions; i++) {
+       opt.push(res.rows[i].choice)
+       desc.push(res.rows[i].description)
+     }
+     response.render("userPoll", {title, numOptions, opt, desc, res_code, survey_id});
+   }
+ )
+ })
 
 
 
 router.post("/userPoll", (req, res) => {
-/*   console.log(req.body)
-
-  const respondentId;
-  const surveyId;
+   console.log(req.body, req, "delta")
+/*
+  const respondentCode = req.body['res_code']
+  const surveyId = req.body['survey_id']
   const updateSubmissionsReturnId =
         `INSERT INTO submissions (respondent_id, survey_id)
          VALUES (${respondentId}, ${surveyId})
@@ -71,7 +96,6 @@ router.post("/userPoll", (req, res) => {
   // 4) then we can insert newly updated rank_total into the database using ALTER
   // 5) Also when we post with AJAX, the redirect doesnt work on the routes (Andy told me)
   // so we will have to figure out way to redirect to vote_result page within the AJAX requset
-  res.end(JSON.stringify({message: 'can be anything you choose'}));
-
+  res.redirect('/createPoll');
   });
 module.exports = router;

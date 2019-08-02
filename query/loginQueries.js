@@ -15,6 +15,7 @@ function insertAdminEmailReturnId(req, res, next){
     .then((id) => {
       //update session with admin id
       req.session.userId = id.rows[0]['id']
+      console.log(req.session.userId)
       next()
     })
     .catch(err => {

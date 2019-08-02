@@ -16,26 +16,16 @@
   <body>
     <nav class="header">
       <h1 href="/">iWant</h1>
-      <form method="GET" action="/createPoll">
-        <div class="button_cont" align="center">
-          <input class="headerNewPoll" type="submit" target="_blank" rel="nofollow noopener" value="Create New Poll">
-        </div>
-      </form>
     </nav>
 
     <main>
       <section>
         <form method="POST" action="/login">
           <h1 class="font1">Enter Your Email!</h1>
-          <textarea class="enterEmail" name="text" placeholder="email@email.com"></textarea>
+          <input class="enterEmail" type="email" name="text" placeholder="email@email.com"></input>
           <div class="button_cont" align="center">
           <input id="login" type="submit" target="_blank" rel="nofollow noopener" value="Login">
         </form>
-
-          <%# <div>
-            <input id="login" type="submit" value="Login your ass right now">
-          </div> %>
-       
       </section>
     </main>
   </body>
