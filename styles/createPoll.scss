@@ -1,5 +1,6 @@
 .questionBox {
-  width: 840px;
+  width: 45vw;
+  height: 7.5vw;
   outline: none;
   text-align: center;
   display: inline-block;
@@ -11,7 +12,8 @@
 }
 
 #optionBox {
-  width: 400px;
+  width: 22vw;
+  height: 5vw;
   text-align: center;
   display: inline-block;
   border-radius: 20px;
@@ -30,6 +32,8 @@
 
 
 #addOption {
+  //width: 17vw;
+  //height: 4.5vw;
   border: none;
   background: #404040;
   color: #ffffff !important;
@@ -54,6 +58,8 @@
 }
 
 .makePollButton {
+  //width: 17vw;
+  //height: 4.5vw;
   border: none;
   background: #404040;
   color: #ffffff !important;
@@ -71,7 +77,7 @@
   font-weight: 700 !important;
   letter-spacing: 3px;
   // background: none;
-  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -webkit-box-shadow: 0px  5px 40px -10px rgba(0,0,0,0.57);
   -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   transition: all 0.3s ease 0s;
 }

@@ -34,7 +34,8 @@ router.post("/createPoll", requiresLogin, (req, response) => {
       console.log('Email sent: ' + info.response);
     }
   });
-    response.redirect('/vote_result');
+
+    response.redirect('/createPoll');
 });
 
 module.exports = router;

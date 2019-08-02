@@ -3,8 +3,8 @@
 html {
   // background-image: url("https://thewallpaper.co//wp-content/uploads/2016/10/full-screen-high-definition-desktop-backgrounds-nature-hd-full-hd-download-high-definiton-wallpapers-desktop-images-windows-10-backgrounds-colourful-computer-wallpapers-colours-artwork.jpg");
   background-image: url("https://s2.best-wallpaper.net/wallpaper/3840x2160/1804/Grass-path-man_3840x2160.jpg");
-  // background-image: url("http://www.steamfilms.ca/rocketreel/images/featuredReels/1920x1080?file=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F771313787_1920x810.jpg%3Fr%3Dpad");
-  // background-repeat: space;
+  background-image: url("http://www.steamfilms.ca/rocketreel/images/featuredReels/1920x1080?file=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F771313787_1920x810.jpg%3Fr%3Dpad");
+  background-repeat: space;
   background-size: cover;
 }
 
@@ -40,26 +40,21 @@ body {
 }
 
 .headerNewPoll {
-  border: none;
-  background: #404040;
-  color: #ffffff !important;
-  font-weight: 100;
-  padding: 20px;
+  color: black !important;
   text-transform: uppercase;
+  background: #ffffff;
+  padding: 20px;
+  border: 4px solid #494949 !important;
   border-radius: 6px;
   display: inline-block;
   transition: all 0.3s ease 0s;
-  margin: 60px;
+  margin: 50px;
 }
 
 .headerNewPoll:hover {
-  color: #404040 !important;
-  background-color: white;
-  font-weight: 700 !important;
-  letter-spacing: 3px;
-  // background: none;
-  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  color: #494949 !important;
+  border-radius: 50px;
+  border-color: blue !important;
   transition: all 0.3s ease 0s;
 }
 
@@ -74,19 +69,20 @@ main {
 }
 
 .enterEmail {
-  width: 800px;
+  width: 45vw;
+  height: 4.5vw;
+  font-size: 2.5vw;
   text-align: center;
-  font-size: 2em;
-  padding-top: 30px;
   display: inline-block;
   resize: none;
-  outline: none;
   border-radius: 20px;
 }
 
 
 #login {
   border: none;
+  width: 17vw;
+  height: 4.5vw;
   background: #404040;
   color: #ffffff !important;
   font-weight: 100;
