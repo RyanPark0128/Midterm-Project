@@ -3,11 +3,7 @@ const router = express.Router();;
 const {getSurveyWithAdminCode} = require('../query/resultsQuerries')
 
 router.get("/vote_result/:code", (req, res) => {
-  const adminCode =req.params.code
-  getSurveyWithAdminCode(adminCode).then(() => {
-    //check if admin is logged in
-    res.render('vote_results', templateVars)
-  })
+    res.render("vote_result")
 });
 
   module.exports = router;

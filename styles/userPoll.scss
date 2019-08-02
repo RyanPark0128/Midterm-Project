@@ -25,16 +25,17 @@ h3 {
   margin: 0 5px 5px 5px;
   padding-top:20px;
   text-align:left;
-  font-size: 1.0em;
+  font-size: 1.2em;
   height: 125px;
-  padding-left: 20px;
+  padding-left: 40px;
   width: 70%;
   border-radius: 20px;
+  opacity: 0.8;
 }
 
-.sortable li span {
-  position: absolute;
-  margin-left: -1.3em;
+.sortable li p {
+  font-size: 15px;
+  margin-top: 0px;
 }
 
 #myBtn {
@@ -80,4 +81,9 @@ h3 {
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   transition: all 0.3s ease 0s;
+}
+
+#title {
+  font-size: 45px;
+  margin-bottom: 0px;
 }

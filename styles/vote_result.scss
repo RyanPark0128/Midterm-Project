@@ -38,4 +38,25 @@ table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
   text-align: center;
+  background-color: white;
+  opacity: 0.75;
+  border-radius:20px;
+  outline:none;
+  resize:none;
+  border: none;
+}
+
+#container {
+  width: 60%;
+  text-align:center;
+  font-size: 25px;
+  font-family: 'Nunito', sans-serif;
+}
+
+#rankFont {
+  font-size: 30px;
+}
+
+#optionFont {
+  font-size: 30px;
 }
