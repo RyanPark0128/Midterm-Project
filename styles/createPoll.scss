@@ -1,21 +1,26 @@
 .questionBox {
-  resize: none;
-  width: 800px;
-  outline:none;
+  width: 840px;
+  outline: none;
   text-align: center;
   display: inline-block;
   border-radius: 20px;
   font-size: 2em;
   resize: none;
-  align: center;
+  padding-top: 30px;
+  opacity: 0.8;
 }
 
 #optionBox {
-  width: 500px;
+  width: 400px;
   text-align: center;
+  display: inline-block;
   border-radius: 20px;
   resize: none;
   font-size: 1.5em;
+  padding-top: 20px;
+  outline: none;
+  opacity: 0.8;
+  margin: 10px;
 }
 
 // .makePollButton {
@@ -58,7 +63,7 @@
   border-radius: 6px;
   display: inline-block;
   transition: all 0.3s ease 0s;
-  }
+}
 
 .makePollButton:hover {
   color: #404040 !important;
@@ -70,6 +75,7 @@
   -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   transition: all 0.3s ease 0s;
 }
+
 
 #myBtn {
   display: none;
